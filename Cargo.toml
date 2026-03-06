@@ -1,0 +1,60 @@
+[package]
+name = "vault_x_cli"
+version = "0.6.0"
+edition = "2021"
+description = "A secure terminal-based password manager"
+
+[dependencies]
+# --- Kernfunktionalität ---
+aes-gcm = "0.10.3"
+argon2 = "0.5.3"
+rand = "0.8.5"
+hex = "0.4.3"
+zeroize = { version = "1.7.0", features = ["zeroize_derive"] }
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.115"
+thiserror = "1.0.58"
+zxcvbn = "2.2.2"
+rpassword = "7.3.1"
+widestring = "1.0.2"
+
+# --- Hilfsfunktionen & UI ---
+colored = "2.1.0"
+log = "0.4.21"
+env_logger = "0.11.3"
+arboard = "3.4.0"
+rust-i18n = "2.2.4" # Dies bleibt natürlich bestehen!
+
+# --- Defender & System-Info ---
+sha2 = "0.10.8"
+notify = "8.0.0"
+lazy_static = "1.4.0"
+sysinfo = "0.29.11"
+crossterm = "0.27"
+prettytable-rs = "0.10"
+
+# CSV Export
+csv = "1.3.0"
+chrono = { version = "0.4", features = ["serde"] }
+netstat2 = "0.11"
+flexi_logger = { version = "0.30.2", features = ["specfile_without_notification", "compress"] }
+
+# Base64 Encoding/Decoding
+base64 = "0.21"
+
+# Windows spezifisch für Defender
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-sys = { version = "0.52.0", features = [
+    "Win32_System_Diagnostics_Debug",
+    "Win32_System_Threading",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Storage_FileSystem",
+    "Win32_Foundation",
+    "Win32_System_SystemInformation",
+    "Win32_System_Memory",
+    "Win32_System_Environment",
+]}
+
+# Linux spezifisch für Defender
+[target.'cfg(target_os = "linux")'.dependencies]
+libc = "0.2.153"
