@@ -23,7 +23,7 @@ colored = "2.1.0"
 log = "0.4.21"
 env_logger = "0.11.3"
 arboard = "3.4.0"
-rust-i18n = "2.2.4" # Dies bleibt natürlich bestehen!
+rust-i18n = "2.2.4" 
 
 # --- Defender & System-Info ---
 sha2 = "0.10.8"
